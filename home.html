@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+         * {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --main-color: #04f3df;
+    --text-color: #fff;
+    --bg-color: #292a1c;
+    --big-font: 5rem;
+    --h2-font: 2.25rem;
+    --p-font: 0.9rem;
+    --animate-duration: 800ms;
+    --animate-delay: 0.9s;
+}
+
+*::selection {
+    background: var(--main-color);
+    color: #fff;
+}
+
+body {
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 170px;
+    background: var(--bg-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+}
+
+.logo {
+    color: var(--main-color) font-weight: 600;
+    font-size: 2.4rem;
+    text-shadow: 0px 1px #fff, 4px 4px 0px #010000;
+
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    transition: .4s;
+}
+
+#menu-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+}
+
+section {
+    padding: 70px 17%;
+}
+
+.home {
+    width: 100%;
+    min-height: 90vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+    align-items: center;
+}
+
+.home-img img {
+    max-width: 100%;
+    width: 600px;
+    height: auto;
+    width: 300px;
+    overflow: hidden;
+    clip-path: circle(30% at center);
+}
+.home-img .svg-overlay{
+    width="100%" 
+    height="100%"
+}
+.home-text h1 {
+    font-size: var(--big-font);
+    color: var(--main-color);
+
+}
+
+.home-text h1:hover {
+    animation: bounce;
+    animation-duration: 2s;
+}
+
+.home-text h2 {
+    font-size: var(--h2-font);
+    margin: 1rem 0 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 100px;
+    background: var(--main-color);
+    color: #fff;
+    border-radius: 0.10rem;
+    box-shadow: 0 2px 4px rgba(248, 237, 241, 0.9);
+}
+
+.btn:hover {
+    transform: scale(1.2) translateY(10px);
+    transition: .4s;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 1.5rem;
+    align-items: center;
+}
+
+.about-img img {
+    max-width: 100%;
+    width: 480px;
+    height: auto;
+    clip-path: circle(30% at center);
+}
+
+.about-text span {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.about-text h2 {
+    font-size: var(--h2-font);
+}
+
+.about-text p {
+    margin: 0.8rem 0 1.8rem;
+    line-height: 1.7;
+}
+
+.heading {
+    text-align: center;
+}
+
+.heading span {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.heading span {
+    font-size: var(--h2-font);
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    grid-gap: 1.5rem;
+    align-items: center;
+}
+
+.menu-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.menu-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.box-responsive {
+    position: relative;
+    margin-top: 4rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #feeee7;
+    padding: 20px;
+    border-radius: 0.5rem;
+}
+
+.box-img {
+    width: 220px;
+    height: 220px;
+}
+
+.box-img img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+}
+
+.box-responsive h2 {
+    font-size: 1.3rem;
+    color: var(--bg-color);
+}
+
+.box-responsive h3 {
+    color: var(--bg-color);
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 4px 0 10px;
+}
+
+.box-responsive span {
+    font-size: var(--p-font);
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.box-responsive .bx {
+    background: var(--main-color);
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    padding: 7px 10px;
+    border-radius: 0 0.5rem 0 0.5rem;
+}
+
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+    grid-gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.s-box {
+    text-align: center;
+    padding: 20px 30px;
+}
+
+.s-box img {
+    width: 90px;
+}
+
+.s-box h3 {
+    margin: 4px 0 10px;
+    color: var(--main-color);
+    font-size: 1.2rem;
+}
+
+.s-box p {
+    line-height: 1.7;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer {
+    padding: 10px 0;
+}
+
+.col {
+    width: 25%;
+}
+
+.col h4 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.col h4::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 50px;
+    left: 0;
+    bottom: -8px;
+    background: var(--main-color);
+}
+
+.col ul li:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.col ul li a {
+    color: #9897a9;
+    font-size: 1.1rem;
+    display: block;
+    text-transform: capitalize;
+    transition: .4s;
+}
+
+.col ul li a:hover {
+    color: var(--text-color);
+    transform: translateX(-12px);
+}
+
+.col .social {
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.col .social a {
+    height: 40px;
+    width: 40px;
+    background: var(--main-color);
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+.col .social a:hover {
+    transform: scale(1.2);
+    color: var(--bg-color);
+    background: var(--text-color);
+}
+
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FASAMAN STORE</title>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+
+
+
+<body>
+    <header>
+        <a href="#" class="logo"> FASAMAN STORE</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+    </header>
+    <!--------home start-------->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Selamat Datang</h1>
+            <h2>cari makanan? <br> disini dong baru paten </h2>
+            <a href="#" class="btn">tekan dong</a>
+        </div>
+
+        <div class="home-img">
+            <img="https://www.freepik.com/free-vector/woman-choosing-healthy-unhealthy-food_8669150.htm#query=tentang%20makanan&position=0&from_view=search&track=ais&uuid=890824e5-01f6-4a42-a73e-cb231822e2a8>
+        </div>
+    </section>
+
+    <!--------about start-------->
+    <section class="about" id="about">
+        
+        </div>
+        <div class="about-text">
+            <span>About Us </span>
+            <h2>According to our<br></h2>
+            <p> You're looking for food, now you've found a good website for finding food</p>
+            <a href="#" class="btn">Learn More</a>
+
+
+        </div>
+    </section>
+
+    <!--------about start-------->
+    <section class="menu" id="menu">
+        <div class="heading">
+            <span>REGIONAL FOOD</span>
+            <h2>NOT EVERYONE CAN TASTE IT</h2>
+        </div>
+        <div class="menu-container">
+            <div class="box-responsive">
+                <div class="box-img">
+                    <img
+                        src="https://img.kurio.network/7g6AvJzDZtNXFdyWQSjLP4v0j-w=/440x440/filters:quality(80)/https://kurio-img.kurioapps.com/22/02/02/776fa0b2-17ba-4db0-9dab-bd57eac6cadb.jpe">
+                </div>
+                <h2>MIE TAREMPA</h2>
+                <h3>DARI ANAMBAS</h3>
+                <span>15.000</span>
+                <i><i class='bx bxs-cart'></i></i>
+            </div>
+
+            <div class="box-responsive">
+                <div class="box-img">
+                    <img
+                        src="https://faktualid.com/wp-content/uploads/2022/06/4.Resep-luti-gendang-ayam.jpg">
+                </div>
+                <h2>Roti GENDANG</h2>
+                <h3>DARI ANAMBAS</h3>
+                <span>RP 10.000</span>
+                <i><i class='bx bxs-cart'></i></i>
+            </div>
+
+            <div class="box-responsive">
+                <div class="box-img">
+                    <img
+                        src="https://img.kurio.network/fsJGxKvFloqUiDGk1UndkgZCXe0=/440x440/filters:quality(80)/https://kurio-img.kurioapps.com/21/09/06/23cc940d-628f-4432-9a90-f6d5c6e9ae2c.jpe">
+                </div>
+                <h2>MIE CAKALANG</h2>
+                <h3>DARI MANADO</h3>
+                <span>RP 22.000</span>
+                <i><i class='bx bxs-cart'></i></i>
+            </div>
+        </div>
+
+        <div class="menu-container">
+            <div class="box-responsive">
+                <div class="box-img">
+                    <img
+                        src="https://www.masakapahariini.com/wp-content/uploads/2019/12/6-1-780x440.jpg">
+                </div>
+                <h2>BUBUR TINUTUAN</h2>
+                <h3>DARI MANADO</h3>
+                <span>RP 15.000</span>
+                <i><i class='bx bxs-cart'></i></i>
+            </div>
+
+            <div class="box-responsive">
+                <div class="box-img">
+                    <img
+                        src="https://imgx.sonora.id/crop/0x0:0x0/700x465/photo/2021/12/14/mie-acehjpg-20211214013348.jpg">
+                </div>
+                <h2>MIE ACEH</h2>
+                <h3>DARI ACEH</h3>
+                <span>RP 15.000</span>
+                <i><i class='bx bxs-cart'></i></i>
+            </div>
+
+            <div class="box-responsive">
+                <div class="box-img">
+                    <img src="https://cdn.idntimes.com/content-images/community/2023/03/1677891960854-20230304090632916-f86cce9f67ab87e1f2714ff01fb5315e-d6d0adc30dbd20f4ff98671808ed6052_600x400.jpg">
+                </div>
+                <h2>MASAK MIRAH</h2>
+                <h3>DARI ACEH</h3>
+                <span>RP 25.000</span>
+                <i><i class='bx bxs-cart'></i></i>
+            </div>
+
+        </div>
+    </section>
+
+    <!--------pesan start-------->
+    <section class="menu-container" id="pesan" >
+        <div>
+            <form>
+                <div>
+                    <label for="name">Nama</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="name">EMAIL</label>
+                    <input type="text" id="makan" name="makan" required>
+
+                    <label for="name">NO.HP</label>
+                    <input type="text" id="minum" name="minum" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!--------service start-------->
+    <section class="service" id="service">
+        <div class="heading">
+            <span>pembuat web ini </span>
+            <h2>gk terlalu bagus</h2>
+        </div>
+        <div class="service-container">
+            <div class="s-box">
+                <img src="IMG/Gambar WhatsApp 2023-12-24 pukul 17.59.22_f5e52326.jpg">
+                <h3>samirudin</h3>
+                <p>sang coding</p>
+
+            </div>
+
+            <div class="s-box">
+                <img src="IMG/Gambar WhatsApp 2023-12-24 pukul 18.08.52_6bc95ac3.jpg">
+                <h3>faizal</h3>
+                <p>sang desain</p>
+            </div>
+
+            <div class="s-box">
+                <img src="IMG/183767.jpg">
+                <h3>pirmansyah</h3>
+                <p>sang upload </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!--------footer start-------->
+    <section id="contact">
+        <div class="footer">
+            <div class="main">
+                <div class="col">
+                    <h4>Menu Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#service">Service</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="col">
+                    <h4>Contact Us</h4>
+                    <div class="social">
+                        <ul>
+                            <a href="#"><i class='bx bxl-facebook'></i></a>
+                            <a href="#"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="#"><i class='bx bxl-youtube'></i></a>
+                        </ul>
+                    </div>
+                </div>
+    </section>
+
+</body>
+
+</html>
+
+ <!--------css-------->
